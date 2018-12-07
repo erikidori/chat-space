@@ -14,5 +14,10 @@ module ChatSpace
       g.helper false
       g.test_framework false
     end
+<<<<<<< Updated upstream
 
 end
+=======
+end
+end
+>>>>>>> Stashed changes
