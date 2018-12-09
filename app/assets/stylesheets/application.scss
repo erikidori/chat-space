@@ -1,5 +1,11 @@
 @import "./reset";
 @import "font-awesome";
+@import "user";
+@import "./_side";
+@import "main";
+@import "variable";
+@import "modules/flash";
+@import "groups/group";
 
 // .news {
 // 	background-color: #38AEF0;
@@ -11,9 +17,7 @@
    Layout
    ========================================================================== */
 
-@mixin font-size($size) {
-  font-size: $size + px;
-}
+
 
 :root {
   --main-gutter: 20px;
@@ -27,7 +31,3 @@
 }
 
 
-
-
-@import "./_side";
-@import "./_main";
