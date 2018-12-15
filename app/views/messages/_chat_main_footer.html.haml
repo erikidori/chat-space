@@ -1,5 +1,15 @@
+/ .main__footer
+/   .main__footer__text
+/     ああああ
+/   .main__footer__send-button
+/     Send
+
+
 .main__footer
-  .main__footer__text
-    ああああ
-  .main__footer__send-button
-    Send
+  = form_for [@group, @message] do |f|
+    = f.text_field :content, class: 'main__footer__text', placeholder: 'type a message'
+    .main__footer__form__mask
+      = f.label :image, class: 'form__mask__image' do
+        = fa_icon 'picture-o', class: 'icon'
+        = f.file_field :image, class: 'hidden'
+    = f.submit 'Send', class: 'main__footer__send-button'

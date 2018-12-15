@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
 # devise_for :users
-    root 'messages#index'   #ルートパスの指定
- 	resources :messages
-    resources :groups
-    resources :users, only: [:show] 
-
+    root 'groups#index'   #ルートパスの指定
+ 	
+    resources :groups , only: [:new, :create, :edit, :update] do
+    	resources :messages, only: [:index, :create]
+    end
+    resources :users, only: [:edit, :update] 
 end
