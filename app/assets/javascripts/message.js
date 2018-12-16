@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(message){
-  	 ( message.image ) ? message.image : "";
-
+  	 message.image = ( message.image ) ? message.image : "";
+     console.log(message.image)
   	  var html =
   	  `<div class="main__message__box">
   <div class="main__message__box__top">
@@ -20,29 +20,31 @@ $(function(){
   <asset_path src=${message.image} >
 </div>`
 return html;
+
 }
 
 
-  $('#new_message').on('submit',function() {
+  $('#new_message').on('submit',function(e) {
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
     $.ajax({
       url: url,
-      tipe: "POST",
+      type: "POST",
       data: formData,
       dataType: 'json',
       processData: false,
       contentType: false
     })
-      .done(function(data){
-      	var html = buildHTML(data);
-      	$('.messages').append(html);
-      	$('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-      	$('form')[0].reset();
-      })
-        .fail(function(){
-        	alert('error');
-        });
-      });
+	.done(function(data){
+		var html = buildHTML(data);
+	  	$('.main__message').append(html);
+	  	$('.main__message__box').animate({scrollTop: $('.main__message__box')[0].scrollHeight}, 'fast');
+	  	$('.main__footer__text').val('');
+	  	$(".main__footer__send-button").prop('disabled', false);
+	})
+	.fail(function(){
+	    alert('error');
+	});
+  });
 });
