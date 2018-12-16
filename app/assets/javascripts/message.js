@@ -1,6 +1,7 @@
 $(function(){
   function buildHTML(message){
-  	if ( message.image ) {
+  	 ( message.image ) ? message.image : "";
+
   	  var html =
   	  `<div class="main__message__box">
   <div class="main__message__box__top">
@@ -19,25 +20,6 @@ $(function(){
   <asset_path src=${message.image} >
 </div>`
 return html;
-} else {
-  var html =
-  `<div class="main__message__box">
-  <div class="main__message__box__top">
-    <div class="main__message__box__top__name">
-      ${message.user_name}
-    </div>
-    <div class="main__message__box__top__time">
-      ${message.date}
-    </div>
-  </div>
-  <div class="main__message__box__text">
-      <p class="lower-message__content">
-        ${message.content}
-      </p>
-  </div>
-  </div>`
-  return html;
-  };
 }
 
 
@@ -62,6 +44,5 @@ return html;
         .fail(function(){
         	alert('error');
         });
-        return false;
       });
 });
